@@ -17,4 +17,5 @@ docker run --network="host" -d quest_cryptostore:latest
 ```
 There's no need to add schema, because QuestDB client figures it out automatically:   
 
-![238929504-5963e2a1-af89-4fb7-925a-c8d00194af49](https://github.com/mrzdev/quest_cryptostore/assets/106373816/a2abbde9-c53e-4d3f-8c3f-c3a331b0c149)
+
+![238929504-5963e2a1-af89-4fb7-925a-c8d00194af49](https://github.com/mrzdev/quest_cryptostore/assets/106373816/f2b8f6b2-9bab-4fc7-8084-95b23752eb14)
