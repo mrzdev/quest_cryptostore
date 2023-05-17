@@ -39,6 +39,10 @@ def push_to_db(key: str, exchange: str, symbol: str, vals: str, receipt_timestam
     """
     logger.info(f"Pushing data to QuestDB table={key}")
     try:
+        vals_split = vals.split(',')
+        orders_dict = dict((a.strip(), float(b.strip()))  \
+                        for a, b in (element.split('=')  \
+                            for element in vals_split))
         with Sender(QUEST_HOST, QUEST_PORT) as sender:
             task = sender.row(
                 key,
@@ -46,7 +50,7 @@ def push_to_db(key: str, exchange: str, symbol: str, vals: str, receipt_timestam
                     'pair': symbol,
                     'exchange': exchange},
                 columns={
-                    'orders': vals,
+                    **orders_dict,
                     'receipt_timestamp': receipt_timestamp,
                     'timestamp': timestamp},
                 at=TimestampNanos.now())
